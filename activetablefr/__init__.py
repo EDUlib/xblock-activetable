@@ -2,4 +2,4 @@
 
 See activetable.activetable for more information.
 """
-from .activetable import ActiveTableXBlock
+from .activetablefr import ActiveTablefrXBlock

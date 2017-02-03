@@ -21,69 +21,69 @@ class ActiveTablefrXBlock(StudioEditableXBlockMixin, XBlock):
     """An XBlock with a tabular problem type that requires students to fill in some cells."""
 
     display_name = String(
-        display_name='Nom d'affichage',
-        help='Le nom que Studio utilise pour ce composant.',
+        display_name='Nom d\'affichage',
+        help='Le nom que Studio utilise pour ce module avancé.',
         scope=Scope.settings,
-        default='Exercice de tableau actif'
+        default='ActiveTable Français'
     )
     content = String(
         display_name='Définition du tableau',
-        help='La définition du tableau dans une syntaxe simili-Python.  Veuillez noter que tout changement au tableau d'un problème actif invalidera toutes les réponses des étudiants',
+        help='La définition du tableau dans une syntaxe simili-Python. Veuillez noter que tout changement au tableau d\'un problème actif invalidera toutes les réponses des étudiants',
         scope=Scope.content,
         multiline_editor=True,
         resettable_editor=False,
         default=textwrap.dedent("""\
         [
-            ['Entête de colonne 1', 'Entête de colonne 2'],
-            ['Entrer "réponse" ici:', Text(answer='réponse')],
+            ['Colonne 1', 'Colonne 2'],
+            ['Entrer "allo" ici:', Text(answer='allo')],
             [42, Numeric(answer=42, tolerance=0.0)],
         ]
         """)
     )
     help_text = String(
         display_name='Aide',
-        help='Le texte affiché quand on clique sur le bouton "+aide".  Si vous enlevez le '
-        'texte d\'aide, la fonction d\'aide est désactivé.',
+        help='Le texte affiché quand on clique sur le bouton "+aide". Si vous enlevez le '
+        'texte d\'aide, la fonction d\'aide sera désactivée.',
         scope=Scope.content,
         multiline_editor=True,
         resettable_editor=False,
-        default='Fill in the cells highlighted in yellow with the correct answers.  '
-        'When you are done, you can check your answers using the button below the table.',
+        default='Remplissez les cellules surlignées avec les bonnes réponses. '
+        'Quand vous aurez terminé, vous pourrez vérifier vos réponses en utilisant le bouton sous le tableau.',
     )
     column_widths = String(
-        display_name='Column widths',
-        help='Set the width of the columns in pixels.  The value should be a Python-like list of '
-        'numerical values.  The total width of the table should not be more than 800. Omitting '
-        'this value will result in equal-width columns with a total width of 800 pixels.',
+        display_name='Largeur des colonnes',
+        help='Définit la largeur des colonnes en pixels. Les valeurs doivent être une liste simili-Python de '
+        'valeurs numériques. La largeur totale de la table ne doit pas dépasser 800. '
+        'Si vous omettez cette valeur, vous obtiendrez des colonnes de largeur égale d\'une largeur totale de 800 pixels.',
         scope=Scope.content,
         resettable_editor=False,
     )
     row_heights = String(
-        display_name='Row heights',
-        help='Set the heights of the rows in pixels.  The value should be a Python-like list of '
-        'numerical values. Rows may grow higher than the specified value if the text in some cells '
-        'in the row is long enough to get wrapped in more than one line.',
+        display_name='Hauteur des colonnes',
+        help='Définit les hauteurs des lignes en pixels. Les valeurs doivent être une liste simili-Python de '
+        'valeurs numériques. Les lignes peuvent augmenter plus que la valeur spécifiée si le texte dans certaines '
+        'cellules de la ligne est assez long pour être enveloppé dans plus d\'une ligne.',
         scope=Scope.content,
         resettable_editor=False,
     )
     default_tolerance = Float(
-        display_name='Default tolerance',
-        help='The tolerance in percent that is used for numerical response cells you did not '
-        'specify an explicit tolerance for.',
+        display_name='Tolérance par défaut',
+        help='La tolérance en pourcentage utilisée pour les cellules de réponse numérique pour lesquelles '
+        'vous n\'avez pas spécifié de tolérance explicite.',
         scope=Scope.content,
         default=1.0,
     )
     max_score = Float(
-        display_name='Maximum score',
-        help='The number of points students will be awarded when solving all fields correctly.  '
-        'For partially correct attempts, the score will be pro-rated.',
+        display_name='Score maximum',
+        help='Le nombre de points attribués aux étudiants lors de la résolution de tous les champs correctement.  '
+        'Pour les tentatives partiellement correctes, le score sera calculé au prorata.',
         scope=Scope.settings,
         default=1.0,
     )
     max_attempts = Integer(
-        display_name='Maximum attempts',
-        help='Defines the number of times a student can try to answer this problem.  If the value '
-        'is not set, infinite attempts are allowed.',
+        display_name='Nombre maximum de tentatives',
+        help='Définit le nombre de fois qu\'un élève peut tenter de répondre à ce problème. '
+        'Si la valeur n\'est pas définie, des tentatives infinies sont autorisées.',
         scope=Scope.settings,
     )
 
@@ -201,7 +201,7 @@ class ActiveTablefrXBlock(StudioEditableXBlockMixin, XBlock):
         frag = Fragment(html)
         frag.add_css(css)
         frag.add_javascript(loader.load_unicode('static/js/src/activetable.js'))
-        frag.initialize_js('ActiveTableXBlock', self.get_status())
+        frag.initialize_js('ActiveTablefrXBlock', self.get_status())
         return frag
 
     def check_and_save_answers(self, data):
@@ -282,7 +282,7 @@ class ActiveTablefrXBlock(StudioEditableXBlockMixin, XBlock):
     def workbench_scenarios():
         """A canned scenario for display in the workbench."""
         return [
-            ("ActiveTableXBlock",
+            ("ActiveTablefrXBlock",
              """<vertical_demo>
                   <activetable url_name="basic">
                     [

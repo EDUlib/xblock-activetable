@@ -1,4 +1,4 @@
-"""Setup for ActiveTable XBlock."""
+"""Setup for ActiveTable FR XBlock."""
 
 import os
 from setuptools import setup
@@ -26,28 +26,25 @@ def readme():
             return f.read()
     else:
         # fallback to a default description
-        return 'ActiveTable XBlock'
+        return 'ActiveTable FR XBlock'
 
 
 setup(
-    name='activetable-xblock',
+    name='activetablefr-xblock',
     version='0.1.0',
-    description='ActiveTable XBlock',
+    description='ActiveTable FR XBlock',
     long_description=readme(),
-    license='Affero GNU General Public License v3 (GPLv3)',
-    author="UBC CTLT",
-    author_email="pan.luo@ubc.ca",
     packages=['activetablefr'],
     install_requires=[
         'XBlock',
     ],
     entry_points={
         'xblock.v1': [
-            'activetablefr = activetablefr.activetablefr:ActiveTablefrXBlock',
+            'activetablefr = activetablefr:ActiveTablefrXBlock',
         ]
     },
     package_data=package_data("activetablefr", ["static", "public", "translations"]),
-    keywords=['edx', 'activetable', 'open-craft'],
+    keywords=['edx', 'activetablefr', 'open-craft'],
     classifiers=[
         "Development Status :: 4 - Beta",
         "Environment :: Plugins",

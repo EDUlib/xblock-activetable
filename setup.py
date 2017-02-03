@@ -1,4 +1,4 @@
-"""Setup for activetable XBlock."""
+"""Setup for ActiveTable FR XBlock."""
 
 import os
 from setuptools import setup
@@ -20,21 +20,40 @@ def package_data(pkg, roots):
     return {pkg: data}
 
 
+def readme():
+    if os.path.exists('README.rst'):
+        with open('README.rst') as f:
+            return f.read()
+    else:
+        # fallback to a default description
+        return 'ActiveTable FR XBlock'
+
+
 setup(
-    name='activetable-xblock',
-    version='0.1',
-    description='activetable XBlock',   # TODO: write a better description.
-    packages=[
-        'activetable',
-    ],
+    name='activetablefr-xblock',
+    version='0.1.0',
+    description='ActiveTable FR XBlock',
+    long_description=readme(),
+    packages=['activetablefr'],
     install_requires=[
         'XBlock',
-        'xblock-utils',
     ],
     entry_points={
         'xblock.v1': [
-            'activetable = activetable:ActiveTableXBlock',
+            'activetablefr = activetablefr:ActiveTablefrXBlock',
         ]
     },
-    package_data=package_data("activetable", ["static", "public"]),
+    package_data=package_data("activetablefr", ["static", "public", "translations"]),
+    keywords=['edx', 'activetablefr', 'open-craft'],
+    classifiers=[
+        "Development Status :: 4 - Beta",
+        "Environment :: Plugins",
+        "Framework :: Django",
+        "Intended Audience :: Education",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python",
+        "Programming Language :: JavaScript",
+        "Topic :: Education",
+    ],
 )
+

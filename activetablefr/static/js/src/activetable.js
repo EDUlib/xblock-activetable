@@ -1,5 +1,5 @@
 /* Javascript for ActiveTableXBlock. */
-function ActiveTableXBlock(runtime, element, init_args) {
+function ActiveTablefrXBlock(runtime, element, init_args) {
 
     var checkHandlerUrl = runtime.handlerUrl(element, 'check_answers');
     var saveHandlerUrl = runtime.handlerUrl(element, 'save_answers');
@@ -87,7 +87,7 @@ function ActiveTableXBlock(runtime, element, init_args) {
         var $help_text = $('#activetable-help-text', element), visible;
         $help_text.toggle();
         visible = $help_text.is(':visible');
-        $(this).text(visible ? '-help' : '+help');
+        $(this).text(visible ? '-aide' : '+aide');
         $(this).attr('aria-expanded', visible);
     }
 
