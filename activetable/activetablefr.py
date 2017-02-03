@@ -24,7 +24,7 @@ class ActiveTablefrXBlock(StudioEditableXBlockMixin, XBlock):
         display_name='Nom d'affichage',
         help='Le nom que Studio utilise pour ce composant.',
         scope=Scope.settings,
-        default='ActiveTable problem'
+        default='Exercice de tableau actif'
     )
     content = String(
         display_name='Définition du tableau',
