@@ -27,19 +27,19 @@ function ActiveTableXBlock(runtime, element, init_args) {
         var $status_message = $('.status-message', element);
         if (!data.answers_correct) {
             $status.removeClass('incorrect correct');
-            $status.text('unanswered');
+            $status.text('non répondu');
             $status_message.text('');
         }
         else if (data.num_total_answers == data.num_correct_answers) {
             $status.removeClass('incorrect').addClass('correct');
             $status.text('correct');
-            $status_message.text('Great job!');
+            $status_message.text('Bon travail!');
         } else {
             $status.removeClass('correct').addClass('incorrect');
             $status.text('incorrect');
             $status_message.text(
-                'You have ' + data.num_correct_answers + ' out of ' + data.num_total_answers +
-                ' cells correct.'
+                'Vous avez ' + data.num_correct_answers + ' sur un total de ' + data.num_total_answers +
+                ' cellules correctes.'
             );
         }
     }
@@ -55,7 +55,7 @@ function ActiveTableXBlock(runtime, element, init_args) {
             feedback_msg = 'You have used ' + data.attempts + ' of ' + data.max_attempts +
                 ' submissions ' + feedback_msg;
             if (data.attempts == data.max_attempts - 1) {
-                $('.action .check .check-label', element).text('Final check');
+                $('.action .check .check-label', element).text('Vérification finale');
             }
             else if (data.attempts >= data.max_attempts) {
                 $('.action .check, .action .save', element).hide();
